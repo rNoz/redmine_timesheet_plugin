@@ -1,12 +1,12 @@
 require 'redmine'
 
 ## Taken from lib/redmine.rb
-#if RUBY_VERSION < '1.9'
-#  require 'faster_csv'
-#else
-#  require 'csv'
-#  FCSV = CSV
-#end
+if RUBY_VERSION < '1.9'
+ require 'faster_csv'
+else
+ require 'csv'
+ FCSV = CSV
+end
 
 if Rails::VERSION::MAJOR < 3
   require 'dispatcher'
@@ -42,7 +42,7 @@ unless Redmine::Plugin.registered_plugins.keys.include?(:redmine_timesheet_plugi
 
     version '0.7.0'
     requires_redmine :version_or_higher => '0.9.0'
-    
+
     settings(:default => {
                'list_size' => '5',
                'precision' => '2',
